@@ -28,7 +28,9 @@
                       <li class="list-group-item">Author Name : {{i.author}}</li>
                     </ul>
                     <div class="card-body">
-                        <a href="{% url 'Blog_App:view' i.pk %}" class="card-link"><button type="button" class="btn btn-primary">View</button>
+                        <a href="{% url 'Blog_App:view' i.pk %}" class="card-link"><button type="button" class="btn btn-primary">View</button></a>
+                        <a href="{% url 'Blog_App:delete' i.pk %}" class="card-link"><button type="button" class="btn btn-danger">Delete</button>
+                        </a>
                       </div>
                   </div>
             </div>
