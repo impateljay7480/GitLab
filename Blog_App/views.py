@@ -1,6 +1,6 @@
 from django.shortcuts import render,get_object_or_404,redirect
 from django.http import HttpResponse
-from Blog_App.models import Post_Blog 
+from Blog_App.models import Post_Blog,Comment
 from Blog_App.forms import add_blog
 
 # Create your views here.
@@ -10,8 +10,15 @@ def index(request):
     return render(request,'index.html',{'all_blog':all_blog})
 
 def blog_detail(request,id):
+    if request.method == "POST":
+        name = request.POST.get('name')
+        comment = request.POST.get('comment')
+        b_id = request.POST.get('blog_id')
+        c_data = Comment(blog_title=b_id,name=name,comment=comment).save()
     detail = get_object_or_404(Post_Blog,pk=id)
-    return render(request,'view.html',{'detail':detail})
+    comments = Comment.objects.filter(blog_title=detail.pk)
+    print(comments)
+    return render(request,'view.html',{'detail':detail,'comments':comments})
 
 def delete(request,id):
     post = get_object_or_404(Post_Blog,pk=id)
@@ -37,3 +44,4 @@ def like(request,id):
     post = get_object_or_404(Post_Blog,pk=id)
     update = Post_Blog.objects.filter(pk=id).update(blog_like= int(post.blog_like)+1)
     return redirect(f'/view/{id}/')
+

@@ -18,3 +18,11 @@ class Post_Blog(models.Model):
 
     def __str__(self):
         return self.title
+
+class Comment(models.Model):
+    blog_title = models.CharField(max_length=100,default='demo')
+    name = models.CharField(max_length=20,default='demo')
+    comment=models.CharField(max_length=100,default='demo')
+
+    def __str__(self):
+        return self.blog_title
