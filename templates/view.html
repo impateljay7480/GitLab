@@ -23,6 +23,10 @@
                 <h4>Title :  {{ detail.title}}</h4>
                 <h4 class="my-5">Author :  {{ detail.author}}</h4>
                 <h4>Date :  {{ detail.created_date}}</h4>
+                <div class="mt-5">
+                    <a href="{% url 'Blog_App:editblog' id=detail.pk %}"><button type="button" class="btn btn-warning ">Edit
+                    </button></a>
+                </div>
             </div>
         </div>
         <div class="mt-3">

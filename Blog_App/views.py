@@ -24,3 +24,11 @@ def addblog(request):
         add_blog_form.save()
         return redirect('/')
     return render(request,'add_blog.html',{'add_blog_form':add_blog_form})
+
+def editblog(request,id):
+    blog_edit = get_object_or_404(Post_Blog,pk=id)
+    edit_blog_form = add_blog(request.POST or None,instance=blog_edit)
+    if edit_blog_form.is_valid():
+        edit_blog_form.save()
+        return redirect(f'/view/{id}/')
+    return render(request,'add_blog.html',{'edit_blog_form':edit_blog_form})

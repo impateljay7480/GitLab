@@ -21,12 +21,21 @@
         </div>
     </nav>
 
+    {% if edit_blog_form %}
+    <div class="container">
+        <form method="POST" enctype="multipart/form-data">{% csrf_token %}
+            {{edit_blog_form.as_p}}
+            <input type="submit" class="btn btn-success" name="submit">
+        </form>
+    </div>
+    {% else %}
     <div class="container">
         <form method="POST" enctype="multipart/form-data">{% csrf_token %}
             {{add_blog_form.as_p}}
-            <input type="submit" class="btn btn-success" name="submit" >
+            <input type="submit" class="btn btn-success" name="submit">
         </form>
     </div>
+    {% endif %}
 
 
 
