@@ -14,6 +14,7 @@ class Post_Blog(models.Model):
     author = models.ForeignKey(Blog_User,on_delete=models.CASCADE)
     content = models.TextField()
     created_date = models.DateTimeField(auto_now_add=True)
+    blog_like = models.PositiveBigIntegerField(default=0)
 
     def __str__(self):
         return self.title

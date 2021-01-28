@@ -32,3 +32,8 @@ def editblog(request,id):
         edit_blog_form.save()
         return redirect(f'/view/{id}/')
     return render(request,'add_blog.html',{'edit_blog_form':edit_blog_form})
+
+def like(request,id):
+    post = get_object_or_404(Post_Blog,pk=id)
+    update = Post_Blog.objects.filter(pk=id).update(blog_like= int(post.blog_like)+1)
+    return redirect(f'/view/{id}/')

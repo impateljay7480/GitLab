@@ -26,6 +26,9 @@
                 <div class="mt-5">
                     <a href="{% url 'Blog_App:editblog' id=detail.pk %}"><button type="button" class="btn btn-warning ">Edit
                     </button></a>
+                    <a href="{% url 'Blog_App:like' id=detail.pk %}"><button type="button" class="btn btn-primary">
+                        Like <span class="badge badge-light">{{ detail.blog_like}}</span>
+                    </button></a>
                 </div>
             </div>
         </div>

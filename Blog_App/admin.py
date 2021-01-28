@@ -5,7 +5,7 @@ from Blog_App.models import Blog_User,Post_Blog
 
 @admin.register(Post_Blog)
 class blog(admin.ModelAdmin):
-    list_display = ['title','author','created_date']
+    list_display = ['title','author','created_date','blog_like']
     list_filter = ['author','created_date']
 
 @admin.register(Blog_User)
